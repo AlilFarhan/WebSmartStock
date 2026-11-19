@@ -616,11 +616,11 @@ export default function TransactionsPage() {
                   setAmount(p.current_stock);
                 }
               }}
-              className="w-full px-3 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+              className="w-full px-3 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm text-slate-900 focus:ring-2 focus:ring-indigo-500 focus:outline-none"
             >
-              <option value="">-- Pilih Produk Inventaris --</option>
+              <option value="" className="text-slate-900">-- Pilih Produk Inventaris --</option>
               {products.map((p) => (
-                <option key={p.id} value={p.id}>
+                <option key={p.id} value={p.id} className="text-slate-900">
                   [{p.sku}] {p.name} (Stok: {p.current_stock} {p.unit})
                 </option>
               ))}
@@ -707,7 +707,7 @@ export default function TransactionsPage() {
               value={referenceNote}
               onChange={(e) => setReferenceNote(e.target.value)}
               placeholder="Contoh: No. Surat Jalan, Nota Pembelian, atau Alasan Opname"
-              className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+              className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-sm text-slate-900 placeholder-slate-400 focus:ring-2 focus:ring-indigo-500 focus:outline-none"
             />
           </div>
 

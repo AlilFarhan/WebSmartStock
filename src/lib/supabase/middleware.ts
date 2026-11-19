@@ -34,7 +34,10 @@ export async function updateSession(request: NextRequest) {
   // getUser safely validates auth token against Supabase auth server
   const { data: { user } } = await supabase.auth.getUser();
 
-  const isAuthPage = request.nextUrl.pathname.startsWith('/login');
+  const isLoginPage = request.nextUrl.pathname.startsWith('/login');
+  const isResetPasswordPage = request.nextUrl.pathname.startsWith('/reset-password');
+  const isAuthCallback = request.nextUrl.pathname.startsWith('/auth');
+  const isAuthPage = isLoginPage || isResetPasswordPage || isAuthCallback;
   const isApiRoute = request.nextUrl.pathname.startsWith('/api');
 
   // If user is not logged in and trying to access protected routes
@@ -45,7 +48,7 @@ export async function updateSession(request: NextRequest) {
   }
 
   // If user is logged in and trying to access login page, redirect to dashboard
-  if (user && isAuthPage) {
+  if (user && isLoginPage) {
     const url = request.nextUrl.clone();
     url.pathname = '/';
     return NextResponse.redirect(url);
